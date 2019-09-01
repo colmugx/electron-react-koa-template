@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import request from './utils/request'
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
+import request from './utils/request';
 
 let mainWindow: BrowserWindow;
 
@@ -25,6 +26,17 @@ function createWindow() {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
+
+  if (process.env.APP_ENV === 'development') {
+    require('devtron').install();
+
+    installExtension(REACT_DEVELOPER_TOOLS)
+      .then()
+      .catch(err => console.log('An error occurred: ', err));
+    installExtension(REDUX_DEVTOOLS)
+      .then()
+      .catch(err => console.log('An error occurred: ', err));
+  }
 }
 
 app.on('ready', createWindow);
@@ -42,11 +54,11 @@ app.on('activate', function() {
 });
 
 function runServer() {
-  require('../server')
+  require('../server');
 }
 
 ipcMain.on('fetch', event => {
   request.get('http://localhost:9080', {}).then(res => {
-    event.returnValue = res
-  })
-})
+    event.returnValue = res;
+  });
+});
