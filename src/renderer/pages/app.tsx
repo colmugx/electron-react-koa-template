@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { ipcRenderer } from 'electron'
 
 class Index extends PureComponent {
 
@@ -9,13 +10,10 @@ class Index extends PureComponent {
   componentDidMount() {}
 
   handleClick = () => {
-    fetch('http://localhost:9080')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          msg: json.message
-        })
-      })
+    const res = ipcRenderer.sendSync('fetch')
+    this.setState({
+      msg: res.message
+    })
   }
 
   render() {

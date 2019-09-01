@@ -1,4 +1,5 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import request from './utils/request'
 
 let mainWindow: BrowserWindow;
 
@@ -16,7 +17,6 @@ function createWindow() {
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
-      webSecurity: false,
     },
   });
 
@@ -44,3 +44,9 @@ app.on('activate', function() {
 function runServer() {
   require('../server')
 }
+
+ipcMain.on('fetch', event => {
+  request.get('http://localhost:9080', {}).then(res => {
+    event.returnValue = res
+  })
+})

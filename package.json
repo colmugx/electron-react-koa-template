@@ -4,8 +4,7 @@
   "description": "",
   "main": "app/main.js",
   "scripts": {
-    "build:dev": "APP_ENV='development' node ./config/build.js",
-    "build:prod": "APP_ENV='production' node ./config/build.js",
+    "build": "APP_ENV='production' node ./config/build.js",
     "dev": "APP_ENV='development' node ./config/dev.js"
   },
   "keywords": [
@@ -20,18 +19,21 @@
     "electron": "^6.0.4",
     "fs-extra": "^8.1.0",
     "koa": "^2.8.1",
+    "node-fetch": "^2.6.0",
     "typescript": "^3.5.3"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@hot-loader/react-dom": "^16.9.0",
     "@svgr/webpack": "^4.3.2",
     "@types/koa": "^2.0.49",
+    "@types/node-fetch": "^2.5.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/webpack-dev-server": "^3.1.7",
