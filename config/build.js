@@ -7,6 +7,7 @@ build()
 
 function build() {
   /** main */
+  runner(mainConfig).then(console.log)
   runner(rendererConfig).then(console.log)
 }
 
@@ -28,7 +29,6 @@ function runner(config) {
         chunks: false,
         colors: true
       }))
-
 
     })
   })
