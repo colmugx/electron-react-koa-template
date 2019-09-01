@@ -26,7 +26,7 @@ const devPlugins = [
 const prodPlugins = [
   new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
   new HtmlWebpackPlugin({
-    filename: `${config.distRoot}/index.html`,
+    filename: `index.html`,
     template: './config/plugins/template.html',
     inject: true,
     meta: {

@@ -20,7 +20,7 @@ module.exports = {
     app: './src/renderer/index.tsx'
   },
   output: {
-    path: config.runnerRoot,
+    path: config.isDev ? config.runnerRoot : config.appRoot,
     filename: 'renderer.js',
   },
   resolve: {
