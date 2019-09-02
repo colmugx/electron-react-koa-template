@@ -12,10 +12,11 @@ const sassLoader = {
 const typingsForCssModulesLoader = {
   loader: 'css-loader',
   options: {
-    modules: true,
-    localIdentName: (config.isDev
-      ? '[name]__[local]___[hash:base64:5]'
-      : '[local]___[hash:base64:5]'),
+    modules: {
+      localIdentName: (config.isDev
+        ? '[name]__[local]___[hash:base64:5]'
+        : '[local]___[hash:base64:5]'),
+    },
   }
 }
 
